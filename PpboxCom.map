@@ -1,0 +1,9 @@
+{
+	global: 
+            DllCanUnloadNow*;
+            DllRegisterServer*;
+            DllUnregisterServer*;
+            DllGetClassObject*;
+
+	local: *;
+};
