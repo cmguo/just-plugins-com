@@ -6,7 +6,8 @@
 #include "MediaSdk.h"
 
 #define PPBOX_DISABLE_AUTO_START
-#include "plugins/ppbox/ppbox.h"
+#define PPBOX_IMPORT_FUNC
+#include <plugins/ppbox/ppbox_dynamic.h>
 
 //-------------------------------------------------------------------
 // CreateInstance
