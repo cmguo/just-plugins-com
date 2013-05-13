@@ -7,7 +7,7 @@
 
 #define PPBOX_DISABLE_AUTO_START
 #define PPBOX_IMPORT_FUNC
-#include <plugins/ppbox/ppbox_dynamic.h>
+#include <plugins/ppbox/ppbox_runtime.h>
 
 //-------------------------------------------------------------------
 // CreateInstance
