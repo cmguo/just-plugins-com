@@ -90,7 +90,7 @@ HRESULT MediaSdk::QueryInterface(REFIID riid, void** ppv)
 }
 
 
-HRESULT STDMETHODCALLTYPE MediaSdk::StartP2PEngine( 
+HRESULT STDMETHODCALLTYPE MediaSdk::StartEngine( 
     /* [in] */ LPCOLESTR pszGid,
     /* [in] */ LPCOLESTR pszPid,
     /* [in] */ LPCOLESTR pszAuth)
@@ -101,14 +101,14 @@ HRESULT STDMETHODCALLTYPE MediaSdk::StartP2PEngine(
     LPCSTR pid = W2A(pszPid);
     LPCSTR auth = W2A(pszAuth);
 
-    long r = PPBOX_StartP2PEngine()(gid, pid, auth);
+    long r = PPBOX_StartEngine()(gid, pid, auth);
 
     return r == ppbox_success ? S_OK : E_FAIL;
 }
 
-HRESULT STDMETHODCALLTYPE MediaSdk::StopP2PEngine()
+HRESULT STDMETHODCALLTYPE MediaSdk::StopEngine()
 {
-    PPBOX_StopP2PEngine()();
+    PPBOX_StopEngine()();
     return S_OK;
 }
 

@@ -24,12 +24,12 @@ public:
     STDMETHODIMP_(ULONG) AddRef();
     STDMETHODIMP_(ULONG) Release();
 
-    virtual HRESULT STDMETHODCALLTYPE StartP2PEngine( 
+    virtual HRESULT STDMETHODCALLTYPE StartEngine( 
         /* [in] */ LPCOLESTR pszGid,
         /* [in] */ LPCOLESTR pszPid,
         /* [in] */ LPCOLESTR pszAuth);
     
-    virtual HRESULT STDMETHODCALLTYPE StopP2PEngine();
+    virtual HRESULT STDMETHODCALLTYPE StopEngine();
 
     virtual HRESULT STDMETHODCALLTYPE DownloadOpen(
         /* [in] */ LPCOLESTR pszUrl,
