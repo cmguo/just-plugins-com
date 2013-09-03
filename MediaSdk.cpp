@@ -6,7 +6,7 @@
 #include "MediaSdk.h"
 
 #define PPBOX_DISABLE_AUTO_START
-#include <plugins/ppbox/ppbox_runtime.h>
+#include <plugins/ppbox/IPpboxRuntime.h>
 
 //-------------------------------------------------------------------
 // CreateInstance
