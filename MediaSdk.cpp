@@ -5,8 +5,8 @@
 
 #include "MediaSdk.h"
 
-#define PPBOX_DISABLE_AUTO_START
-#include <plugins/ppbox/IPpboxRuntime.h>
+#define JUST_DISABLE_AUTO_START
+#include <plugins/just/IPpboxRuntime.h>
 
 //-------------------------------------------------------------------
 // CreateInstance
@@ -101,14 +101,14 @@ HRESULT STDMETHODCALLTYPE MediaSdk::StartEngine(
     LPCSTR pid = W2A(pszPid);
     LPCSTR auth = W2A(pszAuth);
 
-    long r = PPBOX_StartEngine()(gid, pid, auth);
+    long r = JUST_StartEngine()(gid, pid, auth);
 
-    return r == ppbox_success ? S_OK : E_FAIL;
+    return r == just_success ? S_OK : E_FAIL;
 }
 
 HRESULT STDMETHODCALLTYPE MediaSdk::StopEngine()
 {
-    PPBOX_StopEngine()();
+    JUST_StopEngine()();
     return S_OK;
 }
 
@@ -124,9 +124,9 @@ HRESULT STDMETHODCALLTYPE MediaSdk::DownloadOpen(
     LPCSTR format = W2A(pszFormat);
     LPCSTR file = W2A(psz);
 
-    PPBOX_Download_Handle h = PPBOX_DownloadOpen()(url, format, file, NULL);
+    JUST_Download_Handle h = JUST_DownloadOpen()(url, format, file, NULL);
 
-    if (h == PPBOX_INVALID_DOWNLOAD_HANDLE)
+    if (h == JUST_INVALID_DOWNLOAD_HANDLE)
         return E_FAIL;
 
     *lpdwHandle = (DWORD)h;
@@ -137,8 +137,8 @@ HRESULT STDMETHODCALLTYPE MediaSdk::DownloadOpen(
 HRESULT STDMETHODCALLTYPE MediaSdk::DownloadClose(
     /* [in] */ DWORD dwHandle)
 {
-    PPBOX_Download_Handle h = (PPBOX_Download_Handle)dwHandle;
-    PPBOX_DownloadClose()(h);
+    JUST_Download_Handle h = (JUST_Download_Handle)dwHandle;
+    JUST_DownloadClose()(h);
     return S_OK;
 }
 
@@ -146,10 +146,10 @@ HRESULT STDMETHODCALLTYPE MediaSdk::GetDownloadInfo(
     /* [in] */ DWORD dwHandle, 
     /* [out] */ LPDownloadStatistic lpStatistic)
 {
-    PPBOX_Download_Handle h = (PPBOX_Download_Handle)dwHandle;
-    PPBOX_DownloadStatistic stat;
-    long r = PPBOX_GetDownloadInfo()(h, &stat);
-    if (r != ppbox_success)
+    JUST_Download_Handle h = (JUST_Download_Handle)dwHandle;
+    JUST_DownloadStatistic stat;
+    long r = JUST_GetDownloadInfo()(h, &stat);
+    if (r != just_success)
         return E_FAIL;
     lpStatistic->dwTotalSize = stat.total_size;
     lpStatistic->dwFinishSize = stat.finish_size;
